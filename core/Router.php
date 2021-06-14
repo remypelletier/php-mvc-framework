@@ -8,15 +8,16 @@ namespace app\core;
  * @author Rémy Pelletier
  * @package app\core
  */
-
 class Router
 {
     public Request $request;
+    public Response $response;
     protected array $routes = [];
 
-    function __construct(\app\core\Request $request)
+    function __construct(\app\core\Request $request, \app\core\Response $response)
     {
         $this->request = $request;
+        $this->response = $response;
     }
 
     public function get($path, $callback)
@@ -30,9 +31,35 @@ class Router
         $method = $this->request->getMethod();
         $callback = $this->routes[$method][$path] ?? false;
         if($callback === false) {
-            echo "not found";
-            exit;
+            $this->response->setStatusCode(404);
+            return 'not found';
         }
-        echo call_user_func($callback);
+        // view
+        if (is_string($callback)) {
+            return $this->renderView($callback);
+        }
+        // callback
+        return call_user_func($callback);
+    }
+    
+    public function renderView($view)
+    {
+        $layoutContent = $this->layoutContent();
+        $viewContent = $this->renderOnlyView($view);
+        return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
+
+    public function layoutContent()
+    {
+        ob_start();
+        include_once Application::$ROOT_DIR.'/views/layouts/main.php'; 
+        return ob_get_clean();
+    }
+
+    public function renderOnlyView($view)
+    {
+        ob_start();
+        include_once Application::$ROOT_DIR."/views/$view.php"; 
+        return ob_get_clean();
     }
 }
