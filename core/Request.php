@@ -8,7 +8,6 @@ namespace app\core;
  * @author Rémy Pelletier
  * @package app\core
  */
-
 class Request
 {
     public function getPath()
