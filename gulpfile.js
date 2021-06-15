@@ -32,7 +32,7 @@ const cleanTask = () => {
 
 const scss = () => {
     return src(path.src.scss)
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer('last 2 versions'))
         .pipe(dest(path.dest.css))
 }
@@ -57,7 +57,7 @@ const dev = () => {
     browserSync.init({
         proxy: "localhost:80"
     });
-    watch([path.src.js, path.src.scss, path.views.all], { events: 'change' }, series(cleanTask, scss, js, reload));
+    watch([path.src.js, path.src.scss, path.views.all], { events: 'change' }, series(scss, js, reload));
 }
 
 exports.dev = dev;
