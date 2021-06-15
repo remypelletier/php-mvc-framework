@@ -1,7 +1,48 @@
 @charset 'utf-8';
 
+@import
+  'base/reset',
+  'base/typography';
+
+@import
+  'layouts/header';
+
+@import
+  'components/form';
+
+$background-color: #f4f4f4;
+$link-color: #000;
+
+html {
+    font-size: 62.5%; /* Sets up the Base 10 stuff */
+    box-sizing: border-box;
+}
+
 body {
-    background-color: blue;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    background-color :$background-color;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+}
+
+$base-font-size: 4;
+$base-padding-b: 2.2;
+@for $i from 1 through 6 {
+    h#{$i} {
+        font-family: 'Poppins', Helvetica, sans-serif;
+        font-size: $base-font-size - (0.4 * $i) * 1rem;
+        padding-bottom: $base-padding-b - (0.2 * $i) * 1rem;
+        font-weight: 700;
+    }
+}
+
+.main-container {
+  padding: 8rem 2rem;
 }
 
 /*@import

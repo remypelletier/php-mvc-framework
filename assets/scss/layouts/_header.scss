@@ -1,0 +1,123 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    li {
+        a {
+            display: block;
+            padding: 20px 20px;
+            border-right: 1px solid hsl(0, 0%, 96%);
+            text-decoration: none;
+            
+            &:hover {
+                background-color: #f4f4f4;
+            }
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        background-color: #fff;
+    }
+
+    &__logo {
+        font-size: 2em;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #fff;
+    }
+
+    &__menu {
+        position: absolute;
+        z-index: -1;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        transition: top .2s ease-out;
+        box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+    }
+
+    &__active {
+        top: 5.8rem;
+    }
+
+    &__menu-icon {
+        cursor: pointer;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+
+        .navicon {
+            background: #333;
+            display: block;
+            height: 2px;
+            position: relative;
+            transition: background .2s ease-out;
+            width: 18px;
+
+            &:before, &:after {
+                background: #333;
+                content: '';
+                display: block;
+                height: 100%;
+                position: absolute;
+                transition: all .2s ease-out;
+                width: 100%;
+            }
+
+            &:before {
+                top: 5px;
+            }
+
+            &:after {
+                top: -5px;
+            }
+        }
+
+        .navicon__active {
+            background: transparent;
+            &:before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+            &:after {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+  
+@media (min-width: 48em) {
+    .header {
+        &__menu {
+            z-index: 0;
+            position: relative;
+            display: flex;
+            top: 0;
+            box-shadow: none;
+            & > li:first-child {
+                margin-left: auto;
+            }
+        }
+
+        &__menu-icon {
+            display: none;
+        }
+    } 
+}
