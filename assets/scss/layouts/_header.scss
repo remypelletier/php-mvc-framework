@@ -43,17 +43,21 @@
     }
 
     &__menu {
+        opacity: 0;
         position: absolute;
         z-index: -1;
-        top: -100%;
-        left: 0;
+        left: -100vw;
+        max-height: 100vh;
+        overflow: scroll;
+        top: 5.8rem;
         width: 100%;
-        transition: top .2s ease-out;
+        transition: left .3s ease-out, opacity .3s ease-in-out;
         box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
     }
 
     &__active {
-        top: 5.8rem;
+        left: 0;
+        opacity: 1;
     }
 
     &__menu-icon {
@@ -106,6 +110,7 @@
 @media (min-width: 48em) {
     .header {
         &__menu {
+            opacity: 1;
             z-index: 0;
             position: relative;
             display: flex;
