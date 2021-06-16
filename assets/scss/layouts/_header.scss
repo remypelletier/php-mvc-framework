@@ -107,7 +107,7 @@
     }
 }
   
-@media (min-width: 48em) {
+@media (min-width: 768px) {
     .header {
         &__menu {
             opacity: 1;
@@ -115,6 +115,7 @@
             position: relative;
             display: flex;
             top: 0;
+            left: 0;
             box-shadow: none;
             & > li:first-child {
                 margin-left: auto;

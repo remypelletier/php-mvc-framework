@@ -44,5 +44,15 @@
                 background-color: #dbdbdb;
             }
         }
+
+        &__is-invalid {
+            border-color: red;
+        }
+
+        &__invalid-feedback {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.3rem;
+            color: red;
+        }
     }
 }
