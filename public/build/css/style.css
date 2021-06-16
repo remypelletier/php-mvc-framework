@@ -1,5 +1,317 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
 body {
-  background-color: blue; }
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #fff;
+  -webkit-box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid whitesmoke;
+  text-decoration: none;
+}
+
+.header li a:hover {
+  background-color: #f4f4f4;
+}
+
+.header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  background-color: #fff;
+}
+
+.header__logo {
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+.header__menu {
+  position: absolute;
+  z-index: -1;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  -webkit-transition: top .2s ease-out;
+  transition: top .2s ease-out;
+  -webkit-box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header__active {
+  top: 5.8rem;
+}
+
+.header__menu-icon {
+  cursor: pointer;
+  padding: 28px 20px;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.header__menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  -webkit-transition: background .2s ease-out;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header__menu-icon .navicon:before, .header__menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header__menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header__menu-icon .navicon:after {
+  top: -5px;
+}
+
+.header__menu-icon .navicon__active {
+  background: transparent;
+}
+
+.header__menu-icon .navicon__active:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: 0;
+}
+
+.header__menu-icon .navicon__active:after {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+@media (min-width: 48em) {
+  .header__menu {
+    z-index: 0;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    top: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .header__menu > li:first-child {
+    margin-left: auto;
+  }
+  .header__menu-icon {
+    display: none;
+  }
+}
+
+.form-legend {
+  font-size: 2rem;
+  font-weight: 700;
+  padding-bottom: 2.2rem;
+}
+
+.form-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.form-field__input {
+  padding: 1rem;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+.form-field__label {
+  padding-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.form-field__textarea {
+  padding: 1rem;
+  font-family: inherit;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 12rem;
+}
+
+.form-field__button {
+  border: none;
+  padding: 2rem;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 700;
+  background-color: #e4e4e4;
+  margin-top: .8rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+}
+
+.form-field__button:hover {
+  background-color: #dbdbdb;
+}
+
+html {
+  font-size: 62.5%;
+  /* Sets up the Base 10 stuff */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  background-color: #f4f4f4;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-size: 3.6rem;
+  padding-bottom: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-size: 3.2rem;
+  padding-bottom: 1.8rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-size: 2.8rem;
+  padding-bottom: 1.6rem;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-size: 2.4rem;
+  padding-bottom: 1.4rem;
+  font-weight: 700;
+}
+
+h5 {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-size: 2rem;
+  padding-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+h6 {
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-size: 1.6rem;
+  padding-bottom: 1rem;
+  font-weight: 700;
+}
+
+.main-container {
+  padding: 8rem 2rem;
+}
 
 /*@import
   'abstracts/variables',
