@@ -180,7 +180,7 @@ table {
           transform: rotate(-45deg);
 }
 
-@media (min-width: 48em) {
+@media (min-width: 768px) {
   .header__menu {
     opacity: 1;
     z-index: 0;
@@ -189,6 +189,7 @@ table {
     display: -ms-flexbox;
     display: flex;
     top: 0;
+    left: 0;
     -webkit-box-shadow: none;
             box-shadow: none;
   }
@@ -251,6 +252,16 @@ table {
 
 .form-field__button:hover {
   background-color: #dbdbdb;
+}
+
+.form-field__is-invalid {
+  border-color: red;
+}
+
+.form-field__invalid-feedback {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.3rem;
+  color: red;
 }
 
 html {

@@ -15,6 +15,8 @@ abstract class Model
     public const RULES_MIN = 'min';
     public const RULES_MAX = 'max';
     public const RULES_MATCH = 'match';
+    public array $errors = [];
+    abstract public function rules(): array;
 
     public function loadData($data)
     {
@@ -24,10 +26,6 @@ abstract class Model
             }
         }
     }
-
-    abstract public function rules(): array;
-
-    public array $errors = [];
 
     public function validate()
     {
@@ -57,6 +55,16 @@ abstract class Model
             }
         }
         return empty($this->errors);
+    }
+
+    public function hasError($attribute)
+    {
+        return !empty($this->errors[$attribute]);
+    }
+
+    public function getFirstError($attribute)
+    {
+        return $this->errors[$attribute][0];
     }
 
     public function addError(string $attribute, string $ruleName, array $params = [])
