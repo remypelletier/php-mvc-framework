@@ -1,3 +1,3 @@
 # php-mvc-framework
 
-Own php framework to understand the basics
+Under development: Own php framework to understand the basics
